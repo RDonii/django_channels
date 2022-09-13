@@ -4,7 +4,6 @@ from asgiref.sync import async_to_sync
 class StreamConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.stream_key = self.scope['url_route']['kwargs']['stream_key']
-        print('ABRAKADABRAAAAAAAAAA, BUGUN BAVARYA YUTQIZADIIIIIIIIIIIIIIIIIIIII')
         await self.channel_layer.group_add(self.stream_key, self.channel_name)
         await self.accept()
     

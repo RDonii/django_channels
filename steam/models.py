@@ -14,6 +14,6 @@ class Channels(models.Model):
     def save(self, *args, **kwargs):
         channel_layer = get_channel_layer()
 
-        async_to_sync(channel_layer.group_send)(self.key, {'type': 'reload', 'output': self.has_output})
+        async_to_sync(channel_layer.group_send)(str(self.key), {'type': 'reload', 'output': str(self.has_output)})
 
         return super(Channels, self).save(*args, **kwargs)
